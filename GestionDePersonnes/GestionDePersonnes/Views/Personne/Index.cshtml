@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <table border="1" cellpadding="2" cellspacing="2">
+        <tr>
+
+            <th> Id_personne </th>
+            <th> Prenom </th>
+            <th> Nom </th>
+            <th> Email</th>
+            <th> Num_tel</th>
+            <th> Note </th>
+            <th> Département </th>
+            <th> Date_naissance </th>
+
+        </tr>
+        @foreach (var personne in ViewBag.personnes)
+        {
+    <tr>
+        <td> @personne.Id_personne</td>
+        <td> @personne.Prenom</td>
+        <td> @personne.Nom</td>
+        <td> @personne.Email</td>
+        <td> @personne.Num_tel</td>
+        <td> @personne.Note</td>
+        <td> @personne.Departement</td>
+        <td> @personne.Date_naissance</td>
+    </tr>
+
+        }
+
+    </table>
+</body>
+</html>

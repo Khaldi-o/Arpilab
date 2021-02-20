@@ -1,0 +1,92 @@
+﻿
+@model GestionDePersonnes.Models.Personne
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+</head>
+<body>
+
+    <form method="post" asp-controller="personne" asp-action="Add">
+
+        <table>
+
+            <tr>
+                <td>Id_personne </td>
+                <td>
+                    <input type="number" asp-for="Id_personne" required="required" />
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>Prenom </td>
+                <td>
+                    <input type="text" asp-for="Prenom" required="required" />
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>Nom </td>
+                <td>
+                    <input type="text" asp-for="Nom" required="required" />
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>Email </td>
+                <td>
+                    <input type="text" asp-for="Email" required="required" />
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>Num_tel </td>
+                <td>
+                    <input type="number" asp-for="Num_tel" />
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>Note </td>
+                <td>
+                    <input type="number" asp-for="Note" />
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>Département </td>
+                <td>
+                    <input type="text" asp-for="Departement" required="required" />
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>Date_naissance </td>
+                <td>
+                    <input type="date" asp-for="Date_naissance" />
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>&nbsp; </td>
+                <td>
+                    <input type="submit" value="Créer" />
+                </td>
+            </tr>
+
+        </table>
+
+    </form>
+</body>
+</html>

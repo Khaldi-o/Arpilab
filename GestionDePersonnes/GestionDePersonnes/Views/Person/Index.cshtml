@@ -1,0 +1,108 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+
+        h3 {
+            text-shadow: 2px 2px 5px #84C1EF;
+            text-align: justify;
+        }
+
+        .fixed-footer {
+            top: 0;
+            position: fixed;
+            padding: 10px 0;
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+
+        <img src="Views/logo.PNG" alt="arpilab" style="float:left;width:42px;height:42px;">
+
+        <div class="fixed-header">
+
+            <h3> Lister les personnes</h3>
+
+
+        </div>
+    </header>
+
+
+    <table border="1" cellpadding="2" cellspacing="2" class="table table = sortable ">
+        <thead>
+            <tr>
+
+                <th> Id_personne </th>
+                <th> Prenom </th>
+                <th> Nom </th>
+                <th> Email</th>
+                <th> Num_tel</th>
+                <th> Note </th>
+                <th> Département </th>
+                <th> Date_naissance </th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var personne in ViewBag.personnes)
+            {
+                <tr>
+                    <td> @personne.Id_personne</td>
+                    <td> @personne.Prenom</td>
+                    <td> @personne.Nom</td>
+                    <td> @personne.Email</td>
+                    <td> @personne.Num_tel</td>
+                    <td> @personne.Note</td>
+                    <td> @personne.Departement</td>
+                    <td> @personne.Date_naissance</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+    <br /> <br />
+
+    <a asp-controller="personne" asp-action="add"> Ajouter une personne</a> <br />
+
+    <a asp-controller="personne" asp-action="delete" onclick="return confirm('voulez vous suprrimez... ?')"> Supprimer une personne</a> <br />
+
+    <a asp-controller="personne" asp-action="edit"> Editer une personne</a>
+
+
+</body>
+
+<script>
+    const compare = (ids, asc) => (row1, row2) => {
+        const tdValue = (row, ids) => row.children[ids].textContent;
+        const tri = (v1, v2) => v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2);
+        return tri(tdValue(asc ? row1 : row2, ids), tdValue(asc ? row2 : row1, ids));
+    };
+
+    const tbody = document.querySelector('tbody');
+    const thx = document.querySelectorAll('th');
+    const trxb = tbody.querySelectorAll('tr');
+    thx.forEach(th => th.addEventListener('click', () => {
+        let classe = Array.from(trxb).sort(compare(Array.from(thx).indexOf(th), this.asc = !this.asc));
+        classe.forEach(tr => tbody.appendChild(tr));
+    }));
+</script>
+   
+</html>
